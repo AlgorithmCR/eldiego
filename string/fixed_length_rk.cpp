@@ -1,22 +1,22 @@
 #include <bits/stdc++.h>
 #include <functional>
 using namespace std;
+#define MAXN 100005
 
 typedef long long ll;
 typedef function<char(int)> f_getter;
 typedef function<void(ll)> f_matcher;
 
 
-#define MAX_LENGTH 100005
 
 struct RobinKarpMatchSetting {
-	int p_length;
-	int t_length;
-	f_getter t_getter;
-	f_matcher matcher;
+	int p_length; //Largo pattern a buscar
+	int t_length; //Largo texto en el que buscar
+	f_getter t_getter; //Funcion que devuelve el iesimo elemento del texto
+	f_matcher matcher; //Funcion que se activa cada vez que hay match
 };
 
-ll rk_pot[MAX_LENGTH];
+ll rk_pot[MAXN];
 ll rk_p = 257, rk_M = 1000000007, rk_p_inv = 70038911; //pow(257,10**9+7-2,10**9+7)
 void initRK(){
 	ll p = 1;
@@ -27,7 +27,7 @@ void initRK(){
 
 ll calcHashRK(int start, int offset, f_getter getter){
 	ll r = 0;
-	for (int i = start; i < start+offset; i++) r=(r+rk_pot[i]*getter(i))%rk_M;
+	for (int i = start; i < start+offset; i++) r=(r+rk_pot[i-start]*getter(i))%rk_M;
 	return r;
 }
 
@@ -40,30 +40,6 @@ void RKSearch(RobinKarpMatchSetting &ms){
 		h = (h + ms.t_getter(i)*rk_pot[ms.p_length-1]) % rk_M;
 		ms.matcher(h);
 	}
-}
-
-//Search lowest x such that f(x) >= value
-int lowerBound(int minX, int maxX, function<int(int)> f, int value){
-	int low = minX, hi = maxX+1, mid;
-	while(low < hi){
-		mid = (low+hi)/2;
-		int v = f(mid);
-		if (v >= value) hi = mid;
-		else low = mid+1;
-	}
-	return low;
-}
-
-//Search lowest x such that f(x) > value
-int upperBound(int minX, int maxX, function<int(int)> f, int value){
-	int low = minX, hi = maxX+1, mid;
-	while(low < hi){
-		mid = (low+hi)/2;
-		int v = f(mid);
-		if (v <= value) low = mid+1;
-		else hi = mid;
-	}
-	return low;
 }
 
 string text[35];
