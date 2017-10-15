@@ -35,3 +35,24 @@ double realLowerBound(double minX, double maxX, function<bool(double)> p) {
 	}
 	return ans;
 }
+
+//Retorna argmax de una funcion unimodal 'f' en el rango [right,left]
+//Dependiendo del if en el SEARCH_ERROR minimiza el error del f(argmax) o de argmax
+double ternarySearch(double right, double left, function<double(double)> f){
+	double leftThird, rightThird;
+	while(true){
+		if (abs(f(right) - f(left)) < SEARCH_ERROR){//Quitar f() si se quiere minimizar el error de argmax
+			return (left + right)/2;
+		}
+
+		leftThird=left+(right-left)/3;
+		rightThird=right -  (right - left)/3;
+
+		if (f(leftThird) > f(rightThird)){ //Cambiar por '<' si se quiere minimizar (argmin)
+			left = leftThird;
+		} else {
+			right = rightThird;
+		}
+
+	}
+}
