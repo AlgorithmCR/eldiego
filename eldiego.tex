@@ -51,7 +51,7 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 \cppfile{estructuras/wavelet.tree.cpp}
 
 \section{Algos}%%%%%%%%%%%%%%%%%%ALGORITMOS%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Longest Increasing Subsecuence}
+\subsection{Longest Increasing Subsequence}
 \cppfile[14-42]{algos/lis.cpp}
 \subsection{Alpha-Beta prunning}
 \cppfile{algos/alphabeta.cpp}
@@ -174,8 +174,10 @@ $$y=\sum_{j=1}^n (x_j*(\prod_{i=1, i\neq j}^n m_i)_{m_j}^{-1}*\prod_{i=1, i\neq 
 %\subsection{Criba}
 %\cppfile[19-39]{math/criba.cpp}
 \subsection{Funciones de primos}
-Sea $n=\prod{p_i^{k_i}}$, fact(n) genera un map donde a cada $p_i$ le asocia su $k_i$
-\cppfile[33-125]{math/func.primos.cpp}
+%Sea $n=\prod{p_i^{k_i}}$, fact(n) genera un map donde a cada $p_i$ le asocia su $k_i$
+Iterar mientras el $p^2 \leq N$. Revisar que N!=1, en este caso N es primo.
+\textbf{NumDiv}: Producto (exponentes+1). \textbf{SumDiv}: Product suma geom. factores. \textbf{EulerPhi} (coprimos): Inicia ans=N. Para cada primo divisor: ans-=ans/primo (una vez) y dividir luego N todo lo posible por $p$. 
+%\cppfile[33-125]{math/func.primos.cpp}
 \subsection{Phollard's Rho (rolando)}
 \cppfile[16-84]{math/phollards.rho.cpp}
 \subsection{GCD}
@@ -196,26 +198,26 @@ tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
 %\cppfile{math/frac.cpp}
 \subsection{Polinomio}
 \cppfile[22-91]{math/polinomio.cpp}
-\subsection{Ec. Lineales}
-\cppfile[29-62]{math/eclineales.cpp}
+%\subsection{Ec. Lineales}
+%\cppfile[29-62]{math/eclineales.cpp}
 \subsection{FFT}
 \cppfile[16-81]{math/fft.cpp}
 \subsection{Tablas y cotas (Primos, Divisores, Factoriales, etc)}
 %\subsubsection{
-\paragraph{Factoriales} \ \\
-\begin{tabular}{l|l}
-0! =	1             & 11! = 39.916.800  \\
-1! =	1             & 12! =	479.001.600	($\in \mathtt{int}$)\\
-2! =	2             & 13! =	6.227.020.800	\\
-3! =	6             & 14! =	87.178.291.200	\\
-4! =	24            & 15! =	1.307.674.368.000	\\
-5! =	120   			  & 16! =	20.922.789.888.000	\\
-6! =	720           & 17! =	355.687.428.096.000	\\
-7! =	5.040	        & 18! =	6.402.373.705.728.000	\\
-8! =	40.320	      & 19! =	121.645.100.408.832.000	\\
-9! =	362.880       & 20! =	2.432.902.008.176.640.000	($\in \mathtt{tint}$) \\
-10! =	3.628.800     & 21! =	51.090.942.171.709.400.000
-\end{tabular}
+%\paragraph{Factoriales} \ \\
+%\begin{tabular}{l|l}
+%0! =	1             & 11! = 39.916.800  \\
+%1! =	1             & 12! =	479.001.600	($\in \mathtt{int}$)\\
+%2! =	2             & 13! =	6.227.020.800	\\
+%3! =	6             & 14! =	87.178.291.200	\\
+%4! =	24            & 15! =	1.307.674.368.000	\\
+%5! =	120   			  & 16! =	20.922.789.888.000	\\
+%6! =	720           & 17! =	355.687.428.096.000	\\
+%7! =	5.040	        & 18! =	6.402.373.705.728.000	\\
+%8! =	40.320	      & 19! =	121.645.100.408.832.000	\\
+%9! =	362.880       & 20! =	2.432.902.008.176.640.000	($\in \mathtt{tint}$) \\
+%10! =	3.628.800     & 21! =	51.090.942.171.709.400.000
+%\end{tabular}
  
 max signed tint = 9.223.372.036.854.775.807 \\
 max unsigned tint = 18.446.744.073.709.551.615
@@ -273,52 +275,52 @@ max unsigned tint = 18.446.744.073.709.551.615
 %3343 3347 3359 3361 3371 3373 3389 3391 3407 3413
 %3433 3449 3457 3461 3463 3467 3469 3491 3499 3511
 %3517 3527 3529 3533 3539 3541 3547 3557 3559 3571\\
-\paragraph{Primos cercanos a $10^n$}\ \\
-9941 9949 9967 9973 10007 10009 10037 10039 10061 10067 10069 10079\\
-99961 99971 99989 99991 100003 100019 100043 100049 100057 100069\\
-999959 999961 999979 999983 1000003 1000033 1000037 1000039\\
-9999943 9999971 9999973 9999991 10000019 10000079 10000103 10000121\\
-99999941 99999959 99999971 99999989 100000007 100000037 100000039 100000049\\
-999999893 999999929 999999937 1000000007 1000000009 1000000021 1000000033
+%\paragraph{Primos cercanos a $10^n$}\ \\
+%9941 9949 9967 9973 10007 10009 10037 10039 10061 10067 10069 10079\\
+%99961 99971 99989 99991 100003 100019 100043 100049 100057 100069\\
+%999959 999961 999979 999983 1000003 1000033 1000037 1000039\\
+%9999943 9999971 9999973 9999991 10000019 10000079 10000103 10000121\\
+%99999941 99999959 99999971 99999989 100000007 100000037 100000039 100000049\\
+%999999893 999999929 999999937 1000000007 1000000009 1000000021 1000000033
  
-\paragraph{Cantidad de primos menores que $10^n$}\ \\
-$\pi(10^1)$ = 4 ;
-$\pi(10^2)$ = 25 ;
-$\pi(10^3)$ = 168 ;
-$\pi(10^4)$ = 1229 ;
-$\pi(10^5)$ = 9592 \\
-$\pi(10^6)$ = 78.498 ;
-$\pi(10^7)$ = 664.579 ;
-$\pi(10^8)$ = 5.761.455 ;
-$\pi(10^9)$ = 50.847.534 \\
-$\pi(10^{10})$ = 455.052,511 ;
-$\pi(10^{11})$ = 4.118.054.813 ;
-$\pi(10^{12})$ = 37.607.912.018 ;
+%\paragraph{Cantidad de primos menores que $10^n$}\ \\
+%$\pi(10^1)$ = 4 ;
+%$\pi(10^2)$ = 25 ;
+%$\pi(10^3)$ = 168 ;
+%$\pi(10^4)$ = 1229 ;
+%$\pi(10^5)$ = 9592 \\
+%$\pi(10^6)$ = 78.498 ;
+%$\pi(10^7)$ = 664.579 ;
+%$\pi(10^8)$ = 5.761.455 ;
+%$\pi(10^9)$ = 50.847.534 \\
+%$\pi(10^{10})$ = 455.052,511 ;
+%$\pi(10^{11})$ = 4.118.054.813 ;
+%$\pi(10^{12})$ = 37.607.912.018 ;
 %
 % Fuente: http://primes.utm.edu/howmany.shtml#table
 %
 %
 
 %\subsubsection{Divisores}
-\paragraph{Divisores} \ \\
-Cantidad de divisores ($\sigma_0$) para \emph{algunos} $n / \neg\exists n'<n, \sigma_0(n') \geqslant \sigma_0(n)$ \\
-$\sigma_0(60)$ = 12 ; $\sigma_0(120)$ = 16 ; $\sigma_0(180)$ = 18 ; $\sigma_0(240)$ = 20 ; $\sigma_0(360)$ = 24 \\
-$\sigma_0(720)$ = 30 ; $\sigma_0(840)$ = 32 ; $\sigma_0(1260)$ = 36 ; $\sigma_0(1680)$ = 40 ; $\sigma_0(10080)$ = 72 \\ $\sigma_0(15120)$ = 80 ; $\sigma_0(50400)$ = 108 ; $\sigma_0(83160)$ = 128 ; $\sigma_0(110880)$ = 144 \\
-$\sigma_0(498960)$ = 200 ; $\sigma_0(554400)$ = 216 ; $\sigma_0(1081080)$ = 256 ; $\sigma_0(1441440)$ = 288  $\sigma_0(4324320)$ = 384 ; $\sigma_0(8648640)$ = 448
+%\paragraph{Divisores} \ \\
+%Cantidad de divisores ($\sigma_0$) para \emph{algunos} $n / \neg\exists n'<n, \sigma_0(n') \geqslant \sigma_0(n)$ \\
+%$\sigma_0(60)$ = 12 ; $\sigma_0(120)$ = 16 ; $\sigma_0(180)$ = 18 ; $\sigma_0(240)$ = 20 ; $\sigma_0(360)$ = 24 \\
+%$\sigma_0(720)$ = 30 ; $\sigma_0(840)$ = 32 ; $\sigma_0(1260)$ = 36 ; $\sigma_0(1680)$ = 40 ; $\sigma_0(10080)$ = 72 \\ $\sigma_0(15120)$ = 80 ; $\sigma_0(50400)$ = 108 ; $\sigma_0(83160)$ = 128 ; $\sigma_0(110880)$ = 144 \\
+%$\sigma_0(498960)$ = 200 ; $\sigma_0(554400)$ = 216 ; $\sigma_0(1081080)$ = 256 ; $\sigma_0(1441440)$ = 288  $\sigma_0(4324320)$ = 384 ; $\sigma_0(8648640)$ = 448
  
 %
-Suma de divisores ($\sigma_1$) para \emph{algunos} $n / \neg\exists n'<n, \sigma_1(n') \geqslant \sigma_1(n)$ \\
-$\sigma_1(96)$ = 252 ; $\sigma_1(108)$ = 280 ; $\sigma_1(120)$ = 360 ; $\sigma_1(144)$ = 403 ; $\sigma_1(168)$ = 480 \\
-$\sigma_1(960)$ = 3048 ; $\sigma_1(1008)$ = 3224 ; $\sigma_1(1080)$ = 3600 ; $\sigma_1(1200)$ = 3844 \\
-$\sigma_1(4620)$ = 16128 ; $\sigma_1(4680)$ = 16380 ; $\sigma_1(5040)$ = 19344 ; $\sigma_1(5760)$ = 19890 \\
-$\sigma_1(8820)$ = 31122 ; $\sigma_1(9240)$ = 34560 ; $\sigma_1(10080)$ = 39312 ; $\sigma_1(10920)$ = 40320 \\
-$\sigma_1(32760)$ = 131040 ; $\sigma_1(35280)$ = 137826 ; $\sigma_1(36960)$ = 145152 ; $\sigma_1(37800)$ = 148800 \\
-$\sigma_1(60480)$ = 243840 ; $\sigma_1(64680)$ = 246240 ; $\sigma_1(65520)$ = 270816 ; $\sigma_1(70560)$ = 280098 \\
-$\sigma_1(95760)$ = 386880 ; $\sigma_1(98280)$ = 403200 ; $\sigma_1(100800)$ = 409448  \\
-$\sigma_1(491400)$ = 2083200 ; $\sigma_1(498960)$ = 2160576 ; $\sigma_1(514080)$ = 2177280 \\
-$\sigma_1(982800)$ = 4305280 ; $\sigma_1(997920)$ = 4390848 ; $\sigma_1(1048320)$ = 4464096 \\
-$\sigma_1(4979520)$ = 22189440 ; $\sigma_1(4989600)$ = 22686048 ; $\sigma_1(5045040)$ = 23154768 \\
-$\sigma_1(9896040)$ = 44323200 ; $\sigma_1(9959040)$ = 44553600 ; $\sigma_1(9979200)$ = 45732192
+%Suma de divisores ($\sigma_1$) para \emph{algunos} $n / \neg\exists n'<n, \sigma_1(n') \geqslant \sigma_1(n)$ \\
+%$\sigma_1(96)$ = 252 ; $\sigma_1(108)$ = 280 ; $\sigma_1(120)$ = 360 ; $\sigma_1(144)$ = 403 ; $\sigma_1(168)$ = 480 \\
+%$\sigma_1(960)$ = 3048 ; $\sigma_1(1008)$ = 3224 ; $\sigma_1(1080)$ = 3600 ; $\sigma_1(1200)$ = 3844 \\
+%$\sigma_1(4620)$ = 16128 ; $\sigma_1(4680)$ = 16380 ; $\sigma_1(5040)$ = 19344 ; $\sigma_1(5760)$ = 19890 \\
+%$\sigma_1(8820)$ = 31122 ; $\sigma_1(9240)$ = 34560 ; $\sigma_1(10080)$ = 39312 ; $\sigma_1(10920)$ = 40320 \\
+%$\sigma_1(32760)$ = 131040 ; $\sigma_1(35280)$ = 137826 ; $\sigma_1(36960)$ = 145152 ; $\sigma_1(37800)$ = 148800 \\
+%$\sigma_1(60480)$ = 243840 ; $\sigma_1(64680)$ = 246240 ; $\sigma_1(65520)$ = 270816 ; $\sigma_1(70560)$ = 280098 \\
+%$\sigma_1(95760)$ = 386880 ; $\sigma_1(98280)$ = 403200 ; $\sigma_1(100800)$ = 409448  \\
+%$\sigma_1(491400)$ = 2083200 ; $\sigma_1(498960)$ = 2160576 ; $\sigma_1(514080)$ = 2177280 \\
+%$\sigma_1(982800)$ = 4305280 ; $\sigma_1(997920)$ = 4390848 ; $\sigma_1(1048320)$ = 4464096 \\
+%$\sigma_1(4979520)$ = 22189440 ; $\sigma_1(4989600)$ = 22686048 ; $\sigma_1(5045040)$ = 23154768 \\
+%$\sigma_1(9896040)$ = 44323200 ; $\sigma_1(9959040)$ = 44553600 ; $\sigma_1(9979200)$ = 45732192
 %
 %
 
