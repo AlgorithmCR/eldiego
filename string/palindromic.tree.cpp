@@ -1,5 +1,3 @@
-using namespace std;
- 
 const int maxn = 10100100;
  
 int len[maxn];
@@ -11,8 +9,7 @@ char str[maxn];
  
 int v;
  
-void addLetter(int n)
-{
+void addLetter(int n) {
         while (str[n - len[v] - 1] != str[n] )
                 v = suffLink[v];
         int u = suffLink[v];
@@ -30,8 +27,7 @@ void addLetter(int n)
         cnt[v]++;
 }
  
-void init()
-{
+void init() {
         memset(to, -1, sizeof to);
         str[0] = '#';
         len[0] = -1;
@@ -46,22 +42,18 @@ void init()
         numV = 4;      
 }
  
-int main()
-{
+int main() {
         init();
         scanf("%s", str + 1);
         int n = strlen(str);
         for (int i = 1; i < n; i++)
                 addLetter(i);
- 
         long long ans = 0;
-        for (int i = numV - 1; i > 0; i--)
-        {
+        for (int i = numV - 1; i > 0; i--)         {
                 cnt[suffLink[i] ] += cnt[i];
                 ans = max(ans, cnt[i] * 1LL * len[i] );
 //              fprintf(stderr, "i = %d, cnt = %d, len = %d\n", i, cnt[i], len[i] );
         }
         printf("%lld\n", ans);
- 
         return 0;
 }

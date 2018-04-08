@@ -12,6 +12,8 @@
 
 
 \section{Estructuras}%%%%%%%%%%%%%%%%%%ESTRUCTURAS%%%%%%%%%%%%%%%%%%
+\subsection{Easy segment}
+\cppfile{estructuras/easy_segment_trees.cpp}
 \subsection{RMQ (static)}
 Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera sobre el rango [i, j). Restriccion: LVL $\ge$ ceil(logn); Usar [ ] para llenar arreglo y luego build().
 \cppfile{estructuras/rmq.static.cpp}
@@ -31,18 +33,18 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 \cppfile{estructuras/rmq.2d.cpp}
 %\subsection{Big Int}
 %\cppfile{estructuras/bigint.cpp}
-\subsection{HashTables}
-\cppfile[16-30]{hash.cpp}
+%\subsection{HashTables}
+%\cppfile[16-30]{hash.cpp}
 %\subsection{Modnum}
 %\cppfile{estructuras/mnum.cpp}
 \subsection{Treap para set}
-\cppfile[16-89]{estructuras/treap.cpp}
+\cppfile[16-80]{estructuras/treap_recortado.cpp}
 \subsection{Treap para arreglo}
-\cppfile[17-87]{estructuras/treaparr.cpp}
-\subsection{Convex Hull Trick}
-\cppfile[18-55]{estructuras/convexhull.trick.cpp}
-\subsection{Convex Hull Trick (Dynamic)}
-\cppfile[17-56]{estructuras/convexhull.trick.dyn.cpp}
+\cppfile[17-87]{estructuras/treaparr_recortado.cpp}
+%\subsection{Convex Hull Trick}
+%\cppfile[18-55]{estructuras/convexhull.trick.cpp}
+%\subsection{Convex Hull Trick (Dynamic)}
+%\cppfile[17-56]{estructuras/convexhull.trick.dyn.cpp}
 \subsection{Gain-Cost Set}
 \cppfile[20-43]{estructuras/gain-cost.set.cpp}
 \subsection{Set con busq binaria}
@@ -84,8 +86,8 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 \cppfile[17-30]{string/zfunction.cpp}
 \subsection{Palindromic tree}
 \cppfile{string/palindromic.tree.cpp}
-\subsection{Rabin Karp Fixed Length}
-\cppfile{string/fixed_length_rk.cpp}
+\subsection{Rabin Karp - Distinct Substrings}
+\cppfile{string/rabin_karp_substrings.cpp}
 
 
 \section{Geometria}%%%%%%%%%%%%%%%%%%GEOMETRIA%%%%%%%%%%%%%%%%%%%%%%
@@ -130,7 +132,7 @@ $\sum_{i=0}^n i\binom{n}{i}=n*2^{n-1}$
 
 $\sum_{i=m}^n i = \frac{n(n+1)}{2} - \frac{m(m-1)}{2} = \frac{(n+1-m)(n+m)}{2}$
 
-$\sum_{i=0}^n i = \sum_{i=1}^n i = \frac{n(n+1)}{2}$
+%$\sum_{i=0}^n i = \sum_{i=1}^n i = \frac{n(n+1)}{2}$
 
 $\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6} = \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6}$
 
@@ -147,6 +149,19 @@ $r=e-v+k+1$
 Teorema de Pick: (Area, puntos interiores y puntos en el borde)
 
 $A=I+\frac{B}{2}-1$
+
+$\left\{{n+1\atop k}\right\} = k \left\{{ n \atop k }\right\} + \left\{{n\atop k-1}\right\}$
+for $k > 0$ with initial conditions
+$\left\{{ 0 \atop 0 }\right\} = 1
+\quad \mbox{ and } \quad
+\left\{{ n \atop 0 }\right\} = \left\{{ 0 \atop n }\right\} = 0$
+for $n > 0$.
+Same as $\frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}{k \choose j} j^n$
+
+$\left[{n+1\atop k}\right] = n \left[{n\atop k}\right] + \left[{n\atop k-1}\right]$
+for $k > 0$, with the initial conditions
+$\left[{0\atop 0}\right] = 1 \quad\mbox{and}\quad \left[{n\atop 0}\right]=\left[{0\atop n}\right]=0$
+for $n > 0$.
 
 
 }%
@@ -167,7 +182,7 @@ Las constantes $c_{ij}$ se determinan por los casos base.
 %\subsection{Exp. de Matrices y Fibonacci en log(n)}
 %\cppfile{math/exp.mat.cpp}
 \subsection{Gauss Jordan, Determinante $O(n^3)$}
-\cppfile[17-77]{math/gauss_jordan_stanford.cpp}
+\cppfile{math/gauss_jordan_stanford.cpp}
 \subsection{Teorema Chino del Resto}
 $$y=\sum_{j=1}^n (x_j*(\prod_{i=1, i\neq j}^n m_i)_{m_j}^{-1}*\prod_{i=1, i\neq j}^n m_i)$$
 \cppfile{math/chinese_remainder_stanford.cpp}
@@ -190,10 +205,10 @@ tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
 %\begin{code}
 %tipo lcm(tipo a, tipo b){return a / gcd(a,b) * b;}
 %\end{code}
-\subsection{Inversos}
-\cppfile[7-16]{math/inversos.cpp}
-\subsection{Simpson}
-\cppfile{math/simpson.cpp}
+%\subsection{Inversos}
+%\cppfile[7-16]{math/inversos.cpp}
+%\subsection{Simpson}
+%\cppfile{math/simpson.cpp}
 %\subsection{Fraction}
 %\cppfile{math/frac.cpp}
 \subsection{Polinomio}
@@ -202,7 +217,7 @@ tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
 %\cppfile[29-62]{math/eclineales.cpp}
 \subsection{FFT}
 \cppfile[16-81]{math/fft.cpp}
-\subsection{Tablas y cotas (Primos, Divisores, Factoriales, etc)}
+%\subsection{Tablas y cotas (Primos, Divisores, Factoriales, etc)}
 %\subsubsection{
 %\paragraph{Factoriales} \ \\
 %\begin{tabular}{l|l}
@@ -219,8 +234,8 @@ tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
 %10! =	3.628.800     & 21! =	51.090.942.171.709.400.000
 %\end{tabular}
  
-max signed tint = 9.223.372.036.854.775.807 \\
-max unsigned tint = 18.446.744.073.709.551.615
+%max signed tint = 9.223.372.036.854.775.807 \\
+%max unsigned tint = 18.446.744.073.709.551.615
 %\subsubsection{
 %\paragraph{Primos} \ \\
 %2 3 5 7 11 13 17 19 23 29
@@ -388,17 +403,17 @@ max unsigned tint = 18.446.744.073.709.551.615
 #include <iomanip>
 cout << setfill(' ') << setw(3) << 2 << endl;
 \end{code}
-\subsection*{Leer hasta fin de linea}
-\begin{code}
-#include <sstream>
-//hacer cin.ignore() antes de getline()
-while(getline(cin, line)){
-   	 istringstream is(line);
-   	 while(is >> X)
-   		 cout << X << " ";
-   	 cout << endl;
-}
-\end{code}
+%\subsection*{Leer hasta fin de linea}
+%\begin{code}
+%#include <sstream>
+%//hacer cin.ignore() antes de getline()
+%while(getline(cin, line)){
+%   	 istringstream is(line);
+%   	 while(is >> X)
+%   		 cout << X << " ";
+%   	 cout << endl;
+%}
+%\end{code}
 \subsection*{Aleatorios}
 \begin{code}
 #define RAND(a, b) (rand()%(b-a+1)+a)
@@ -407,18 +422,17 @@ srand(time(NULL));
 \subsection*{Doubles Comp.}
 \begin{code}
 const double EPS = 1e-9;
-x == y	<=> fabs(x-y) < EPS
-x >  y	<=> x > y + EPS
+x == y	<=> fabs(x-y) < EPS, x >  y	<=> x > y + EPS
 x >= y	<=> x > y - EPS
 \end{code}
-\subsection*{Limites}
-\begin{code}
-#include <limits>
-numeric_limits<T>
-	::max()
-	::min()
-	::epsilon()
-\end{code}
+%\subsection*{Limites}
+%\begin{code}
+%#include <limits>
+%numeric_limits<T>
+%	::max()
+%	::min()
+%	::epsilon()
+%\end{code}
 %\subsection*{Muahaha}
 %\begin{code}
 %#include <signal.h>
@@ -452,10 +466,10 @@ getrlimit(RLIMIT_STACK, &rl);
 rl.rlim_cur=1024L*1024L*256L;//256mb
 setrlimit(RLIMIT_STACK, &rl);
 \end{code}
-\subsection*{C++11}
-\begin{code}
-g++ --std=c++11
-\end{code}
+%\subsection*{C++11}
+%\begin{code}
+%g++ --std=c++11
+%\end{code}
 %\subsection*{Leer del teclado}
 %\begin{code}
 %freopen("/dev/tty", "a", stdin);
