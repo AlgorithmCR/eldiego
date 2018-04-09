@@ -95,8 +95,8 @@ void erase(pnode &t, Key key) {
 \cppfile[16-61]{string/suffix.automaton.cpp}
 \subsection{Z Function}
 \cppfile[17-30]{string/zfunction.cpp}
-%\subsection{Palindromic tree}
-%\cppfile{string/palindromic.tree.cpp}
+\subsection{Palindromic tree}
+\cppfile{string/palindromic.tree.cpp}
 \subsection{Rabin Karp - Distinct Substrings}
 \cppfile{string/rabin_karp_substrings.cpp}
 
@@ -192,7 +192,7 @@ Las constantes $c_{ij}$ se determinan por los casos base.
 %\cppfile[2]{math/exp.mod.cpp}
 %\subsection{Exp. de Matrices y Fibonacci en log(n)}
 %\cppfile{math/exp.mat.cpp}
-\subsection{Gauss Jordan, Determinante $O(n^3)$}
+\subsection{Gauss Jordan, Determinante}
 \cppfile{math/gauss_jordan_stanford.cpp}
 \subsection{Teorema Chino del Resto}
 %$$y=\sum_{j=1}^n (x_j*(\prod_{i=1, i\neq j}^n m_i)_{m_j}^{-1}*\prod_{i=1, i\neq j}^n m_i)$$
@@ -491,6 +491,20 @@ setrlimit(RLIMIT_STACK, &rl);
 \subsection*{Iterar subconjunto}
 \begin{code}
 for(int sbm=bm; sbm; sbm=(sbm-1)&bm)
+\end{code}
+\subsection*{Split}
+\begin{code}
+vector<string> split(string str,string sep){
+    char* cstr=const_cast<char*>(str.c_str());
+    char* current;
+    vector<string> arr;
+    current=strtok(cstr,sep.c_str());
+    while(current!=NULL){
+        arr.push_back(current);
+        current=strtok(NULL,sep.c_str());
+    }
+    return arr;
+}
 \end{code}
 %\subsection*{File setup}
 %\begin{code}
