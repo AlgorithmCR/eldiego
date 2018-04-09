@@ -141,6 +141,12 @@ void erase(pnode &t, Key key) {
 
 $\sum_{i=0}^n i\binom{n}{i}=n*2^{n-1}$
 
+$\binom{n}{k}=\frac{n}{k}\binom{n-1}{k-1}$
+
+$\sum_{i=0}^k \binom{a}{0}\binom{b}{k-i}=\binom{a+b}{k}$
+
+$\sum_{i=0}^m \binom{n+i}{i}=\binom{n+m+1}{n+1}$
+
 %$\sum_{i=m}^n i = \frac{n(n+1)}{2} - \frac{m(m-1)}{2} = \frac{(n+1-m)(n+m)}{2}$
 
 %$\sum_{i=0}^n i = \sum_{i=1}^n i = \frac{n(n+1)}{2}$
@@ -152,6 +158,8 @@ $\sum_{i=0}^n i(i-1) = \frac{8}{6}(\frac{n}{2})(\frac{n}{2}+1)(n+1)$ (doubles) $
 %$\sum_{i=0}^n i^3 = \left(\frac{n(n+1)}{2}\right)^2 = \frac{n^4}{4} + \frac{n^3}{2} + \frac{n^2}{4} = \left[\sum_{i=1}^n i\right]^2$
 
 $\sum_{i=0}^n i^4 = \frac{n(n+1)(2n+1)(3n^2+3n-1)}{30} = \frac{n^5}{5} + \frac{n^4}{2} + \frac{n^3}{3} - \frac{n}{30}$
+
+$\sum_{i=0}^n i^p = \frac{(n+1)^{p+1}}{p+1} + \sum_{k=1}^p\frac{B_k}{p-k+1}{p\choose k}(n+1)^{p-k+1}$
 
 $\sum_{i=0}^n i^p = \frac{(n+1)^{p+1}}{p+1} + \sum_{k=1}^p\frac{B_k}{p-k+1}{p\choose k}(n+1)^{p-k+1}$
 
@@ -174,6 +182,21 @@ $\left[{n+1\atop k}\right] = n \left[{n\atop k}\right] + \left[{n\atop k-1}\righ
 for $k > 0$, with the initial conditions
 $\left[{0\atop 0}\right] = 1 \quad\mbox{and}\quad \left[{n\atop 0}\right]=\left[{0\atop n}\right]=0$
 for $n > 0$.
+
+Markov Chain: $\begin{pmatrix}
+Q & R \\ 
+0 & I_r
+\end{pmatrix}$ $Q$ transient st., $R$ absorb. st. 
+
+Fundamental Matrix: $N = \sum_{k}^{\infty} Q^k = (I_t-Q)^{-1}$. 
+
+Steps before absorption: $t = N \cdot 1$
+
+Absorption probability: $B = N \cdot R$
+
+Prob. visiting transient state: $H = (N - I_t) N_{\operatorname{dg}}^{-1}$
+
+Usage Example: GaussJordan((I-Q),b), where b is a dummy column of 0's. Each row $i$ is as if they started at state $i$.
 
 
 }%

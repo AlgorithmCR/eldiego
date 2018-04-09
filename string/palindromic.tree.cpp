@@ -17,8 +17,7 @@ void addLetter(int n) {
                 u = suffLink[u];
         int u_ = to[u][str[n] - 'a'];
         int v_ = to[v][str[n] - 'a'];
-        if (v_ == -1)
-        {
+        if (v_ == -1) {
                 v_ = to[v][str[n] - 'a'] = numV;
                 len[numV++] = len[v] + 2;
                 suffLink[v_] = u_;
@@ -29,25 +28,20 @@ void addLetter(int n) {
  
 void init() {
         memset(to, -1, sizeof to);
-        str[0] = '#';
-        len[0] = -1;
-        len[1] = 0;
-        len[2] = len[3] = 1;
-        suffLink[1] = 0;
-        suffLink[0] = 0;
-        suffLink[2] = 1;
-        suffLink[3] = 1;
+        str[0] = '#'; len[0] = -1;
+        len[1] = 0; len[2] = len[3] = 1;
+        suffLink[0] = suffLink[1] = 0;
+        suffLink[2] = suffLink[3] = 1;
         to[0][0] = 2;
         to[0][1] = 3;
-        numV = 4;      
+        numV = 4;
 }
  
 int main() {
         init();
         scanf("%s", str + 1);
         int n = strlen(str);
-        for (int i = 1; i < n; i++)
-                addLetter(i);
+        for (int i = 1; i < n; i++) addLetter(i);
         long long ans = 0;
         for (int i = numV - 1; i > 0; i--)         {
                 cnt[suffLink[i] ] += cnt[i];

@@ -1,6 +1,7 @@
 int count_unique_substrings(string const& s) {
     int n = s.size();
-
+    //ll p = 257, M = 1000000007, inv = 70038911;
+    //pow(257,10**9+7-2,10**9+7)
     const int p = 31;
     const int m = 1e9 + 9;
     vector<long long> p_pow(n);
