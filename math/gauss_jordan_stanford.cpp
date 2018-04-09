@@ -1,18 +1,19 @@
 // Gauss-Jordan elimination with full pivoting.
 //
 // Uses:
-//   (1) solving systems of linear equations (AX=B)
-//   (2) inverting matrices (AX=I)
-//   (3) computing determinants of square matrices
+// (1) solving systems of linear equations (AX=B)
+// (2) inverting matrices (AX=I)
+// (3) computing determinants of square matrices
 //
 // Running time: O(n^3)
 //
 // INPUT:    a[][] = an nxn matrix
 //           b[][] = an nxm matrix
 //
-// OUTPUT:   X      = an nxm matrix (stored in b[][])
-//           A^{-1} = an nxn matrix (stored in a[][])
-//           returns determinant of a[][]
+// OUTPUT:
+// X= an nxm matrix (stored in b[][])
+// A^{-1} = an nxn matrix (stored in a[][])
+// returns determinant of a[][]
 
 #include <iostream>
 #include <vector>
@@ -82,10 +83,11 @@ int main() {
   // expected: 60  
   cout << "Determinant: " << det << endl;
 
-  // expected: -0.233333 0.166667 0.133333 0.0666667
-  //           0.166667 0.166667 0.333333 -0.333333
-  //           0.233333 0.833333 -0.133333 -0.0666667
-  //           0.05 -0.75 -0.1 0.2
+  // expected: 
+  //-0.233333 0.166667 0.133333 0.0666667
+  // 0.166667 0.166667 0.333333 -0.333333
+  // 0.233333 0.833333 -0.133333 -0.0666667
+  // 0.05 -0.75 -0.1 0.2
   cout << "Inverse: " << endl;
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++)
