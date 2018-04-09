@@ -21,12 +21,13 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 \cppfile{estructuras/rmq.dynamic.cpp}
 \subsection{RMQ (lazy)}
 \cppfile{estructuras/rmq.lazy.cpp}
-\subsection{RMQ (persistente)}
-\cppfile[23-53]{estructuras/rmq.persistent.cpp}
+%\subsection{RMQ (persistente)}
+%\cppfile[23-53]{estructuras/rmq.persistent.cpp}
 %\subsection{Fenwick Tree}
 %\cppfile{estructuras/fenwick.cpp}
 \subsection{Union Find}
-\cppfile{grafos/union.find.cpp}
+%\cppfile{grafos/union.find.cpp}
+\cppfile{grafos/book.union.find.cpp}
 \subsection{Disjoint Intervals}
 \cppfile{estructuras/disjoint.intervals.cpp}
 \subsection{RMQ (2D)}
@@ -38,23 +39,33 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 %\subsection{Modnum}
 %\cppfile{estructuras/mnum.cpp}
 \subsection{Treap para set}
-\cppfile[16-80]{estructuras/treap_recortado.cpp}
+Treap para set tiene un Key unico por nodo. En el split if (key \textless = t-\textgreater key). 
+En at, if(key == t-\textgreater key) return t; en lugar de pos.
+\begin{code}
+void erase(pnode &t, Key key) {
+    if (!t) return; push(t);
+    if (key == t->key) t=merge(t->l, t->r);
+    else if (key < t->key) erase(t->l, key);
+    else erase(t->r, key);
+    if(t) pull(t);}
+\end{code}
+%\cppfile[16-80]{estructuras/treap_recortado.cpp}
 \subsection{Treap para arreglo}
 \cppfile[17-87]{estructuras/treaparr_recortado.cpp}
 %\subsection{Convex Hull Trick}
 %\cppfile[18-55]{estructuras/convexhull.trick.cpp}
 %\subsection{Convex Hull Trick (Dynamic)}
 %\cppfile[17-56]{estructuras/convexhull.trick.dyn.cpp}
-\subsection{Gain-Cost Set}
-\cppfile[20-43]{estructuras/gain-cost.set.cpp}
+%\subsection{Gain-Cost Set}
+%\cppfile[20-43]{estructuras/gain-cost.set.cpp}
 \subsection{Set con busq binaria}
-\cppfile[17-26]{estructuras/order.tree.cpp}
-\subsection{Wavelet tree/matrix}
-\cppfile{estructuras/wavelet.tree.cpp}
+\cppfile[17-23]{estructuras/order.tree.cpp}
+%\subsection{Wavelet tree/matrix}
+%\cppfile{estructuras/wavelet.tree.cpp}
 
 \section{Algos}%%%%%%%%%%%%%%%%%%ALGORITMOS%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Longest Increasing Subsequence}
-\cppfile[14-42]{algos/lis.cpp}
+\cppfile[14-42]{algos/lis_stanford.cpp}
 \subsection{Alpha-Beta prunning}
 \cppfile{algos/alphabeta.cpp}
 \subsection{Mo's algorithm}
@@ -69,11 +80,11 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 \subsection{KMP}
 \cppfile[21-43]{string/kmp.cpp}
 \subsection{Trie}
-\cppfile{string/trie.cpp}
+\cppfile{string/trie_recortado.cpp}
 %\subsection{Suffix Array (corto, nlog2n)}
 %\cppfile[12-26]{string/suffix.array.short.cpp}
 \subsection{Suffix Array (largo, nlogn)}
-\cppfile[-34]{string/suffix.array.cpp}
+\cppfile[-34]{string/suffix.array_recortado.cpp}
 \subsection{String Matching With Suffix Array}
 \cppfile[37-58]{string/suffix.array.cpp}
 \subsection{LCP (Longest Common Prefix)}
@@ -84,8 +95,8 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 \cppfile[16-61]{string/suffix.automaton.cpp}
 \subsection{Z Function}
 \cppfile[17-30]{string/zfunction.cpp}
-\subsection{Palindromic tree}
-\cppfile{string/palindromic.tree.cpp}
+%\subsection{Palindromic tree}
+%\cppfile{string/palindromic.tree.cpp}
 \subsection{Rabin Karp - Distinct Substrings}
 \cppfile{string/rabin_karp_substrings.cpp}
 
@@ -99,8 +110,8 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 \cppfile{geometria/line.cpp}
 \subsection{Segment}
 \cppfile{geometria/segm.cpp}
-\subsection{Rectangle}
-\cppfile{geometria/rect.cpp}
+%\subsection{Rectangle}
+%\cppfile{geometria/rect.cpp}
 \subsection{Polygon Area}
 \cppfile{geometria/area.cpp}
 \subsection{Circle}
@@ -117,8 +128,8 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 \cppfile{geometria/cut.polygon.cpp}
 \subsection{Bresenham}
 \cppfile{geometria/bresenham.cpp}
-\subsection{Rotate Matrix}
-\cppfile{geometria/rotate.cpp}
+%\subsection{Rotate Matrix}
+%\cppfile{geometria/rotate.cpp}
 \subsection{Interseccion de Circulos en n3log(n)}
 \cppfile{geometria/int.circs.cpp}
 
@@ -130,15 +141,15 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 
 $\sum_{i=0}^n i\binom{n}{i}=n*2^{n-1}$
 
-$\sum_{i=m}^n i = \frac{n(n+1)}{2} - \frac{m(m-1)}{2} = \frac{(n+1-m)(n+m)}{2}$
+%$\sum_{i=m}^n i = \frac{n(n+1)}{2} - \frac{m(m-1)}{2} = \frac{(n+1-m)(n+m)}{2}$
 
 %$\sum_{i=0}^n i = \sum_{i=1}^n i = \frac{n(n+1)}{2}$
 
-$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6} = \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6}$
+%$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6} = \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6}$
 
 $\sum_{i=0}^n i(i-1) = \frac{8}{6}(\frac{n}{2})(\frac{n}{2}+1)(n+1)$ (doubles) $\rightarrow$ Sino ver caso impar y par
 
-$\sum_{i=0}^n i^3 = \left(\frac{n(n+1)}{2}\right)^2 = \frac{n^4}{4} + \frac{n^3}{2} + \frac{n^2}{4} = \left[\sum_{i=1}^n i\right]^2$
+%$\sum_{i=0}^n i^3 = \left(\frac{n(n+1)}{2}\right)^2 = \frac{n^4}{4} + \frac{n^3}{2} + \frac{n^2}{4} = \left[\sum_{i=1}^n i\right]^2$
 
 $\sum_{i=0}^n i^4 = \frac{n(n+1)(2n+1)(3n^2+3n-1)}{30} = \frac{n^5}{5} + \frac{n^4}{2} + \frac{n^3}{3} - \frac{n}{30}$
 
@@ -184,7 +195,7 @@ Las constantes $c_{ij}$ se determinan por los casos base.
 \subsection{Gauss Jordan, Determinante $O(n^3)$}
 \cppfile{math/gauss_jordan_stanford.cpp}
 \subsection{Teorema Chino del Resto}
-$$y=\sum_{j=1}^n (x_j*(\prod_{i=1, i\neq j}^n m_i)_{m_j}^{-1}*\prod_{i=1, i\neq j}^n m_i)$$
+%$$y=\sum_{j=1}^n (x_j*(\prod_{i=1, i\neq j}^n m_i)_{m_j}^{-1}*\prod_{i=1, i\neq j}^n m_i)$$
 \cppfile{math/chinese_remainder_stanford.cpp}
 %\subsection{Criba}
 %\cppfile[19-39]{math/criba.cpp}
@@ -341,22 +352,24 @@ tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
 
 
 \section{Grafos}%%%%%%%%%%%%%%%%%%GRAFOS%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Dijkstra}
-\cppfile{grafos/dijkstra.cpp}
+%\subsection{Dijkstra}
+%\cppfile{grafos/dijkstra.cpp}
 \subsection{Bellman-Ford}
 \cppfile{grafos/bellman.ford.cpp}
-\subsection{Floyd-Warshall}
-\cppfile{grafos/floyd.warshall.cpp}
+%\subsection{Floyd-Warshall}
+%\cppfile{grafos/floyd.warshall.cpp}
 %\subsection{Kruskal}
 %\cppfile[27-41]{grafos/kruskal.cpp}
 %\subsection{Prim}
 %\cppfile[23-40]{grafos/prim.cpp}
 \subsection{2-SAT + Tarjan SCC}
 \cppfile{grafos/2sat.cpp}
-\subsection{Articulation Points}
-\cppfile{grafos/articulaciones.cpp}
-\subsection{Comp. Biconexas y Puentes}
-\cppfile[28-76]{grafos/biconexas.bridge.cpp}
+%\subsection{Articulation Points}
+%\cppfile{grafos/articulaciones.cpp}
+%\subsection{Comp. Biconexas y Puentes}
+%\cppfile[28-76]{grafos/biconexas.bridge.cpp}
+\subsection{Puentes y Articulation Points}
+\cppfile{grafos/book.ap.bridges.cpp}
 \subsection{LCA + Climb}
 \cppfile{grafos/lca.climb.cpp}
 \subsection{Heavy Light Decomposition}
@@ -365,8 +378,8 @@ tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
 \cppfile[17-36]{grafos/centroid.cpp}
 \subsection{Euler Cycle}
 \cppfile{grafos/euler.cpp}
-\subsection{Diametro árbol}
-\cppfile[17-48]{grafos/diametro.cpp}
+%\subsection{Diametro árbol}
+%\cppfile[17-48]{grafos/diametro.cpp}
 \subsection{Chu-liu}
 \cppfile{grafos/chuliu.cpp}
 \subsection{Hungarian}
@@ -378,21 +391,22 @@ tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
 \section{Network Flow}%%%%%%%%%%%%%%%%%%FLOW%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Dinic}
 \cppfile[10-76]{flow/dinic.cpp}
-\subsection{Konig}
-\cppfile[98-122]{flow/konig.cpp}
+%\subsection{Konig}
+%\cppfile[98-122]{flow/konig.cpp}
 \subsection{Edmonds Karp's}
 \cppfile{flow/edmonds.karps.cpp}
-\subsection{Push-Relabel O(N3)}
-\cppfile{flow/push.relabel.cpp}
+%\subsection{Push-Relabel O(N3)}
+%\cppfile{flow/push.relabel.cpp}
+\subsection{Max Matching}
+\cppfile{flow/book.max.matching.cpp}
 \subsection{Min-cost Max-flow}
 \cppfile[16-66]{flow/min.cost.max.flow.cpp}
 
-
-\section{Template}%%%%%%%%%%%%%%%%%%TEMPLATE%%%%%%%%%%%%%%%%
+\section{Template y Otros}%%%%%%%%%%%%%%%%%%TEMPLATE%%%%%%%%%%%%%%%%
+\subsection*{Template}
 \cppfile{template.cpp}
 
-
-\section{Ayudamemoria}%%%%%%%%%%%%%%%%%%AYUDAMEMORIA%%%%%%%%%%%%%%%%
+%\section{Ayudamemoria}%%%%%%%%%%%%%%%%%%AYUDAMEMORIA%%%%%%%%%%%%%%%%
 %\subsection*{Cant. decimales}
 %\begin{code}
 %#include <iomanip>
