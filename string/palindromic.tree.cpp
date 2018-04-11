@@ -1,11 +1,8 @@
 const int maxn = 10100100;
  
-int len[maxn];
-int suffLink[maxn];
-int to[maxn][2];
-int cnt[maxn];
-int numV;
-char str[maxn];
+int len[maxn]; int suffLink[maxn];
+int to[maxn][2]; int cnt[maxn];
+int numV; char str[maxn];
  
 int v;
  

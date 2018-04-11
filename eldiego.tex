@@ -39,17 +39,17 @@ Dado un arreglo y una operacion asociativa \emph{idempotente}, get(i, j) opera s
 %\subsection{Modnum}
 %\cppfile{estructuras/mnum.cpp}
 \subsection{Treap para set}
-Treap para set tiene un Key unico por nodo. En el split if (key \textless = t-\textgreater key). 
-En at, if(key == t-\textgreater key) return t; en lugar de pos.
-\begin{code}
-void erase(pnode &t, Key key) {
-    if (!t) return; push(t);
-    if (key == t->key) t=merge(t->l, t->r);
-    else if (key < t->key) erase(t->l, key);
-    else erase(t->r, key);
-    if(t) pull(t);}
-\end{code}
-%\cppfile[16-80]{estructuras/treap_recortado.cpp}
+%Treap para set tiene un Key unico por nodo. En el split if (key \textless = t-%\textgreater key). 
+%En at, if(key == t-\textgreater key) return t; en lugar de pos.
+%\begin{code}
+%void erase(pnode &t, Key key) {
+%    if (!t) return; push(t);
+%    if (key == t->key) t=merge(t->l, t->r);
+%    else if (key < t->key) erase(t->l, key);
+%    else erase(t->r, key);
+%    if(t) pull(t);}
+%\end{code}
+\cppfile[16-80]{estructuras/treap_recortado.cpp}
 \subsection{Treap para arreglo}
 \cppfile[17-87]{estructuras/treaparr_recortado.cpp}
 \subsection{Convex Hull Trick}
@@ -206,6 +206,24 @@ $$L_{i,j}:=
 0 & \mbox{otherwise}
 \end{cases}$$
 
+Cayley's formula: There are $n^{n-2}$ spanning trees of a complete graph with $n$ vertices. 
+
+Derangements: $der(n) = (n-1)*(der(n-1)+der(n-2)), der(0) = 1, der(1)=0$
+
+Number of spanning trees in complete bipartite graph: $n^{m-1}*m^{n-1}$.
+
+Number of pieces into which a circle is divided if n points on its circumference are joined by chords with no three internally concurrent: $\binom{n}{4} + \binom{n}{2} + 1$
+
+Possible sequence of degrees of simple graph. Nonegatives integers $d_1 \geq d_2 \geq ... \geq d_n$ iff sum of degrees is even and $\sum_{i=1}^k d_i \leq k \cdot (k+1) + \sum_{i=k+1}^{n} min(d_i,k)$ for every k in 1...n.
+
+Centroid of polygon: 
+$$C_{\mathrm x} = \frac{1}{6A}\sum_{i=0}^{n-1}(x_i+x_{i+1})(x_i\ y_{i+1} - x_{i+1}\ y_i)$$
+
+$$C_{\mathrm y} = \frac{1}{6A}\sum_{i=0}^{n-1}(y_i+y_{i+1})(x_i\ y_{i+1} - x_{i+1}\ y_i)$$
+where $A$ is the polygon's signed area,
+$$ A = \frac{1}{2}\sum_{i=0}^{n-1} (x_i\ y_{i+1} - x_{i+1}\ y_i)\ $$
+
+
 }%
 \subsection{Ec. Caracteristica}
 $a_0T(n)+a_1T(n-1)+...+a_kT(n-k)=0$
@@ -237,10 +255,10 @@ Iterar mientras el $p^2 \leq N$. Revisar que N!=1, en este caso N es primo.
 %\cppfile[33-125]{math/func.primos.cpp}
 \subsection{Phollard's Rho (rolando)}
 \cppfile[16-84]{math/phollards.rho.cpp}
-\subsection{GCD}
-\begin{code}
-tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
-\end{code}
+%\subsection{GCD}
+%\begin{code}
+%tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
+%\end{code}
 \subsection{Extended Euclid}
 \cppfile{math/extended.euclid.cpp}
 %\subsection{LCM}
@@ -385,13 +403,13 @@ tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
 
 \section{Grafos}%%%%%%%%%%%%%%%%%%GRAFOS%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Dijkstra}
-\cppfile{grafos/book.dijkstra.cpp}
+\cppfile{grafos/dijkstra.cpp}
 \subsection{Bellman-Ford}
 \cppfile{grafos/bellman.ford.cpp}
-%\subsection{Floyd-Warshall}
-%\cppfile{grafos/floyd.warshall.cpp}
-%\subsection{Kruskal}
-%\cppfile[27-41]{grafos/kruskal.cpp}
+\subsection{Floyd-Warshall}
+\cppfile{grafos/floyd.warshall.cpp}
+\subsection{Kruskal}
+\cppfile[27-41]{grafos/kruskal.cpp}
 %\subsection{Prim}
 %\cppfile[23-40]{grafos/prim.cpp}
 \subsection{2-SAT + Tarjan SCC}
@@ -410,8 +428,8 @@ tipo gcd(tipo a, tipo b){return a?gcd(b %a, a):b;}
 \cppfile[17-36]{grafos/centroid.cpp}
 \subsection{Euler Cycle}
 \cppfile{grafos/euler.cpp}
-%\subsection{Diametro árbol}
-%\cppfile[17-48]{grafos/diametro.cpp}
+\subsection{Diametro árbol}
+\cppfile[17-48]{grafos/diametro.cpp}
 \subsection{Chu-liu}
 \cppfile{grafos/chuliu.cpp}
 \subsection{Hungarian}
